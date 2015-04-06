@@ -8,10 +8,15 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
 
-@interface MasterViewController ()
+@interface MasterViewController (){
+    MPMusicPlayerController *musicPlayer;
+    NSArray *collections;
+}
 
 @property NSMutableArray *objects;
+
 @end
 
 @implementation MasterViewController
@@ -25,8 +30,12 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+    musicPlayer = [MPMusicPlayerController systemMusicPlayer];
+    MPMediaQuery *everything = [MPMediaQuery podcastsQuery];
+    collections = [everything items];
+    
+//    UIBarButtonItem *addButton = [[UIBarButtonItem allocxx] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+//    self.navigationItem.rightBarButtonItem = addButton;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,16 +52,6 @@
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-#pragma mark - Segues
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = self.objects[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
-    }
-}
-
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -60,14 +59,16 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.objects.count;
+    return collections.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    NSDate *object = self.objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MediaEntry" forIndexPath:indexPath];
+    
+    MPMediaItem *entity= [collections objectAtIndex:indexPath.row];
+    
+    NSString *title = [entity valueForProperty:MPMediaItemPropertyTitle];
+    [cell.textLabel setText:title];
     return cell;
 }
 
@@ -83,6 +84,19 @@
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    // Navigation logic may go here. Create and push another view controller.
+    MPMediaItem *entity= [collections objectAtIndex:indexPath.row];
+    
+    MPMediaItemCollection *collection = [[MPMediaItemCollection alloc] initWithItems:collections];
+    
+    [musicPlayer setQueueWithItemCollection:collection];
+    [musicPlayer setNowPlayingItem:entity];
+    
+    [musicPlayer prepareToPlay];
+    [musicPlayer play];
 }
 
 @end

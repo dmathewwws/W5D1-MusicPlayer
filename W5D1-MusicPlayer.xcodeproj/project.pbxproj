@@ -15,6 +15,9 @@
 		AF9E5AFA1A8CF53200CC9BDC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF9E5AF91A8CF53200CC9BDC /* Images.xcassets */; };
 		AF9E5AFD1A8CF53200CC9BDC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF9E5AFB1A8CF53200CC9BDC /* LaunchScreen.xib */; };
 		AF9E5B091A8CF53300CC9BDC /* W5D1_MusicPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AF9E5B081A8CF53300CC9BDC /* W5D1_MusicPlayerTests.m */; };
+		AF9E5B131A8CF57500CC9BDC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9E5B121A8CF57500CC9BDC /* MediaPlayer.framework */; };
+		AF9E5B161A8CFEE600CC9BDC /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF9E5B151A8CFEE600CC9BDC /* PlayerViewController.m */; };
+		AF9E5B181A8CFF3D00CC9BDC /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9E5B171A8CFF3D00CC9BDC /* AVKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +46,10 @@
 		AF9E5B021A8CF53300CC9BDC /* W5D1-MusicPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "W5D1-MusicPlayerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF9E5B071A8CF53300CC9BDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF9E5B081A8CF53300CC9BDC /* W5D1_MusicPlayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = W5D1_MusicPlayerTests.m; sourceTree = "<group>"; };
+		AF9E5B121A8CF57500CC9BDC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		AF9E5B141A8CFEE600CC9BDC /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
+		AF9E5B151A8CFEE600CC9BDC /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
+		AF9E5B171A8CFF3D00CC9BDC /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF9E5B181A8CFF3D00CC9BDC /* AVKit.framework in Frameworks */,
+				AF9E5B131A8CF57500CC9BDC /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +75,8 @@
 		AF9E5ADD1A8CF53200CC9BDC = {
 			isa = PBXGroup;
 			children = (
+				AF9E5B171A8CFF3D00CC9BDC /* AVKit.framework */,
+				AF9E5B121A8CF57500CC9BDC /* MediaPlayer.framework */,
 				AF9E5AE81A8CF53200CC9BDC /* W5D1-MusicPlayer */,
 				AF9E5B051A8CF53300CC9BDC /* W5D1-MusicPlayerTests */,
 				AF9E5AE71A8CF53200CC9BDC /* Products */,
@@ -88,6 +99,8 @@
 				AF9E5AEE1A8CF53200CC9BDC /* AppDelegate.m */,
 				AF9E5AF01A8CF53200CC9BDC /* MasterViewController.h */,
 				AF9E5AF11A8CF53200CC9BDC /* MasterViewController.m */,
+				AF9E5B141A8CFEE600CC9BDC /* PlayerViewController.h */,
+				AF9E5B151A8CFEE600CC9BDC /* PlayerViewController.m */,
 				AF9E5AF31A8CF53200CC9BDC /* DetailViewController.h */,
 				AF9E5AF41A8CF53200CC9BDC /* DetailViewController.m */,
 				AF9E5AF61A8CF53200CC9BDC /* Main.storyboard */,
@@ -228,6 +241,7 @@
 				AF9E5AF21A8CF53200CC9BDC /* MasterViewController.m in Sources */,
 				AF9E5AEC1A8CF53200CC9BDC /* main.m in Sources */,
 				AF9E5AF51A8CF53200CC9BDC /* DetailViewController.m in Sources */,
+				AF9E5B161A8CFEE600CC9BDC /* PlayerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
